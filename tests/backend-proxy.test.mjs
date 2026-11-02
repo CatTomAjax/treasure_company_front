@@ -37,12 +37,17 @@ try {
         Origin: 'https://front.test',
         Cookie: 'qianhai_session=test-only',
         'Content-Type': 'application/json',
+        'Accept-Encoding': 'gzip, deflate, br, zstd',
       },
       body: '{"action":"login"}',
     }),
     'http://backend.test:3003',
   );
   check(response.status === 200, '合法同源请求可代理');
+  check(
+    calls[0].headers.get('accept-encoding') === 'identity',
+    '浏览器压缩能力不透传到 Node 后端请求，避免 zstd 响应被误当 JSON',
+  );
   check(
     calls[0].url === 'http://backend.test:3003/api/platform/auth?q=test',
     '路径和查询参数保留',

@@ -46,6 +46,10 @@ export async function proxyBackend(
   }
   const headers = new Headers(request.headers);
   for (const key of transportHeaders) headers.delete(key);
+  // Browser encodings (for example zstd) may not be decoded by this Node runtime.
+  // Request plain bytes for this local hop; the frontend server negotiates its
+  // own response compression with the browser.
+  headers.set('accept-encoding', 'identity');
   // The browser calls its own frontend origin. Validate it above, then express
   // this trusted server hop as a same-origin request to the business backend.
   if (headers.has('origin')) headers.set('origin', target.origin);
