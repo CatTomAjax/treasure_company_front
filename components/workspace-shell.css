@@ -131,7 +131,7 @@
   .ws-content .pp-app .pp-main { padding: 16px 14px; }
   .ws-content .pp-app { min-height: calc(100svh - 63px); }
   .ws-content .pp-mode-line>span:last-child { display: none; }
-  .ws-content .pp-main:not(.page-overview) { min-width: 860px; }
+  .ws-content .pp-main:not(.page-overview):not(.page-portrait) { min-width: 860px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ws-workspace *, .ws-workspace *::before, .ws-workspace *::after { transition: none !important; animation: none !important; }
