@@ -1,0 +1,43 @@
+/* Keep workflow titles and controls from competing for one narrow flex row. */
+.pp-workflow-heading {
+  grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.6fr);
+  margin-bottom: 16px;
+}
+
+.pp-workflow-heading > .pp-heading {
+  min-width: 0;
+  margin: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.pp-workflow-heading > .pp-heading > div {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pp-workflow-heading .pp-heading h1 {
+  white-space: nowrap;
+}
+
+.pp-workflow-heading .pp-heading-actions {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pp-workflow-heading .pp-heading-actions select {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pp-workflow-heading > .pp-panel {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1250px) {
+  .pp-workflow-heading {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}

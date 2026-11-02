@@ -1,0 +1,291 @@
+/* Light application theme over the reused shadcn Sidebar and Command primitives. */
+body:has(.ws-workspace) {
+  background: var(--ui-surface);
+}
+body .ws-workspace,
+[data-mobile='true'][data-slot='sidebar'] {
+  --sidebar: var(--ui-surface);
+  --sidebar-foreground: var(--ui-text);
+  --sidebar-accent: var(--ui-primary);
+  --sidebar-accent-foreground: var(--ui-primary);
+  --sidebar-border: var(--ui-border);
+  --sidebar-ring: var(--ui-primary);
+  --ws-accent: var(--ui-primary);
+  background: var(--ui-bg);
+  color: var(--ui-muted);
+  color-scheme: light;
+}
+body .ws-sidebar,
+body .ws-sidebar [data-slot='sidebar-inner'],
+[data-mobile='true'][data-slot='sidebar'] {
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+}
+body .ws-brand {
+  color: var(--ui-text);
+}
+body .ws-brand-mark {
+  background: var(--ui-surface);
+  color: var(--ui-primary);
+  border: 1px solid var(--ui-border);
+  box-shadow: none;
+}
+body .ws-brand-copy strong > span {
+  color: var(--ui-text);
+  border-color: var(--ui-border);
+  background: var(--ui-surface);
+}
+body .ws-brand-copy small {
+  color: var(--ui-muted);
+}
+body .ws-company {
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+}
+body .ws-company-icon {
+  color: var(--ui-muted);
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+}
+body .ws-company small,
+body .ws-company > svg {
+  color: var(--ui-muted);
+}
+body .ws-company select {
+  color: var(--ui-muted);
+  background: transparent;
+}
+body .ws-company option {
+  color: var(--ui-muted);
+  background: var(--ui-surface);
+}
+body .ws-section-label {
+  color: var(--ui-muted);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+body .ws-navigation {
+  scrollbar-color: #dce3ee transparent;
+}
+body .ws-nav-button {
+  color: var(--ui-muted);
+  font-weight: 450;
+  height: 42px;
+  font-size: 15px;
+}
+body .ws-nav-button > svg:first-child {
+  color: var(--ui-muted);
+}
+body .ws-nav-button:hover,
+body .ws-nav-button[data-open] {
+  color: var(--ui-muted);
+  background: var(--ui-primary-soft);
+}
+body .ws-nav-button[data-active] {
+  color: var(--ui-primary);
+  background: var(--ui-primary-soft);
+  border-color: var(--ui-border);
+  font-weight: 600;
+}
+body .ws-nav-button[data-active] > svg:first-child {
+  color: var(--ui-primary);
+}
+body .ws-nav-button > .ws-ai-badge {
+  color: var(--ui-muted);
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+}
+body .ws-chevron {
+  color: var(--ui-muted);
+}
+body .ws-sub-menu {
+  border-color: var(--ui-border);
+}
+body .ws-sub-link {
+  color: var(--ui-muted);
+}
+body .ws-sub-link:hover {
+  color: var(--ui-primary);
+  background: var(--ui-primary-soft);
+}
+body .ws-sub-link[data-active] {
+  color: var(--ui-primary);
+  background: var(--ui-primary-soft);
+}
+body .ws-active-dot {
+  background: var(--ui-primary-soft);
+}
+body .ws-ai-card {
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+  color: var(--ui-muted);
+}
+body .ws-ai-symbol,
+body .ws-ai-card > svg {
+  color: var(--ui-muted);
+}
+body .ws-ai-card small {
+  color: var(--ui-muted);
+}
+body .ws-all-pages {
+  color: var(--ui-muted);
+}
+body .ws-page-count {
+  color: var(--ui-muted);
+  border-color: var(--ui-border);
+  background: var(--ui-surface);
+}
+body .ws-user {
+  border-color: var(--ui-border);
+}
+body .ws-avatar {
+  color: var(--ui-muted);
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+}
+body .ws-user-copy strong {
+  color: var(--ui-text);
+}
+body .ws-user-copy small,
+body .ws-user > svg {
+  color: var(--ui-muted);
+}
+body .ws-shell {
+  background: var(--ui-bg);
+}
+body .ws-topbar {
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+  backdrop-filter: blur(14px);
+}
+body .ws-sidebar-toggle,
+body .ws-notification {
+  color: var(--ui-muted);
+}
+body .ws-sidebar-toggle:hover {
+  background: var(--ui-primary-soft);
+}
+body .ws-topbar-divider {
+  background: var(--ui-surface);
+}
+body .ws-breadcrumb > span {
+  color: var(--ui-muted);
+}
+body .ws-breadcrumb > svg {
+  color: var(--ui-muted);
+}
+body .ws-breadcrumb > strong {
+  color: var(--ui-text);
+}
+body .ws-search-trigger {
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+  color: var(--ui-muted);
+}
+body .ws-search-trigger kbd {
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+  color: var(--ui-muted);
+}
+body .ws-connection {
+  color: var(--ui-muted);
+}
+body .ws-connection i {
+  background: var(--ui-surface);
+}
+body .ws-content .pp-app.po-app {
+  background: var(--ui-surface);
+}
+body .ws-content .pp-app.po-app .pp-main {
+  padding-top: 13px;
+}
+body .ws-popover,
+body .ws-command-dialog {
+  --background: var(--ui-bg);
+  --foreground: var(--ui-text);
+  --popover: var(--ui-surface);
+  --popover-foreground: var(--ui-text);
+  --muted: var(--ui-muted);
+  --muted-foreground: var(--ui-muted);
+  --accent: var(--ui-primary);
+  --accent-foreground: var(--ui-primary);
+  --border: var(--ui-border);
+  --input: var(--ui-surface);
+  --ring: var(--ui-primary);
+  background: var(--ui-surface);
+  color: var(--ui-muted);
+  border-color: var(--ui-border);
+  box-shadow: var(--ui-shadow);
+  color-scheme: light;
+}
+body .ws-popover-label {
+  color: var(--ui-muted);
+}
+body .ws-popover [role='menuitem']:hover,
+body .ws-popover [role='menuitem'][data-highlighted] {
+  background: var(--ui-primary-soft);
+  color: var(--ui-primary);
+}
+body .ws-command-dialog [data-slot='input-group'] {
+  background: var(--ui-inset);
+  border-color: var(--ui-border);
+}
+body .ws-command-dialog [cmdk-group-heading] {
+  color: var(--ui-text);
+}
+body .ws-command-dialog [cmdk-item][data-selected='true'] {
+  background: var(--ui-primary-soft);
+  color: var(--ui-primary);
+}
+body .ws-command-dialog [cmdk-item] > svg {
+  color: var(--ui-muted);
+}
+body .ws-command-footer {
+  color: var(--ui-muted);
+  border-color: var(--ui-border);
+}
+body .ws-command-footer kbd {
+  border-color: var(--ui-border);
+  color: var(--ui-muted);
+}
+body .po-app .pp-modal {
+  background: var(--ui-surface);
+  color: var(--ui-muted);
+  border: 1px solid var(--ui-border);
+  box-shadow: var(--ui-shadow);
+}
+body .po-app .pp-modal header {
+  border-color: var(--ui-border);
+}
+body .po-app .pp-modal h2 {
+  color: var(--ui-text);
+}
+body .po-app .pp-modal p,
+body .po-app .pp-modal label,
+body .po-app .pp-modal small {
+  color: var(--ui-muted);
+}
+body .po-app .pp-modal input,
+body .po-app .pp-modal select,
+body .po-app .pp-modal textarea {
+  background: var(--ui-inset);
+  border-color: var(--ui-border);
+  color: var(--ui-muted);
+  color-scheme: light;
+}
+body .po-app .pp-modal .pp-btn {
+  background: var(--ui-surface) !important;
+  color: var(--ui-muted) !important;
+  border-color: var(--ui-border) !important;
+  box-shadow: none;
+}
+body .po-app .pp-modal .pp-btn.primary {
+  background: var(--ui-surface) !important;
+  border-color: var(--ui-border) !important;
+  color: var(--ui-text) !important;
+}
+@media (max-width: 767px) {
+  body .ws-content .pp-app.po-app .pp-main {
+    padding-top: 8px;
+  }
+}

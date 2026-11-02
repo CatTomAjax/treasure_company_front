@@ -1,0 +1,609 @@
+/* Shared, readable workspace palette. Artwork and exported document previews keep their own colors. */
+:root {
+  --ui-bg: #f5f7fb;
+  --ui-surface: #ffffff;
+  --ui-inset: #f8fafc;
+  --ui-border: #dce3ed;
+  --ui-border-strong: #bdcadd;
+  --ui-text: #1e293b;
+  --ui-muted: #475569;
+  --ui-subtle: #5f6f86;
+  --ui-primary: #3265ca;
+  --ui-primary-ink: #ffffff;
+  --ui-primary-soft: #eaf1ff;
+  --ui-success: #227356;
+  --ui-success-soft: #eaf6ef;
+  --ui-warning: #946200;
+  --ui-warning-soft: #fff5dc;
+  --ui-danger: #b4233d;
+  --ui-danger-soft: #fff0f2;
+  --ui-purple: #7047b3;
+  --ui-purple-soft: #f2edfb;
+  --ui-overlay: rgb(15 23 42 / 42%);
+  --ui-shadow: 0 2px 8px rgb(15 23 42 / 5%);
+  --ui-chart-grid: #dce3ed;
+}
+html {
+  color-scheme: light;
+}
+body {
+  font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+/* Blue/cyan frame language adapted from Arwes (MIT). See docs/licenses/arwes-MIT.txt. */
+html[data-ui-theme='tech'] {
+  --ui-bg: #07111f;
+  --ui-surface: #0d1c2d;
+  --ui-inset: #11243a;
+  --ui-border: #29455f;
+  --ui-border-strong: #49759b;
+  --ui-text: #e6f1ff;
+  --ui-muted: #c0d1e4;
+  --ui-subtle: #a0b4cd;
+  --ui-primary: #57d5f4;
+  --ui-primary-ink: #062134;
+  --ui-primary-soft: #11344a;
+  --ui-success: #71ddb2;
+  --ui-success-soft: #123b33;
+  --ui-warning: #f1c978;
+  --ui-warning-soft: #3e311c;
+  --ui-danger: #ff9aa8;
+  --ui-danger-soft: #3f2430;
+  --ui-purple: #c4adff;
+  --ui-purple-soft: #302744;
+  --ui-overlay: rgb(0 7 18 / 65%);
+  --ui-shadow: 0 3px 14px rgb(0 6 16 / 18%);
+  --ui-chart-grid: #29455f;
+  color-scheme: dark;
+}
+html[data-ui-theme='tech'] body .ws-content {
+  background-color: var(--ui-bg);
+  background-image:
+    linear-gradient(#25405b33 1px, transparent 1px),
+    linear-gradient(90deg, #25405b33 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+html[data-ui-theme='tech'] body .ws-content .pp-app {
+  background-color: transparent;
+}
+html[data-ui-theme='tech']
+  body
+  :is(.pp-panel, .ag-panel, .po-panel, .pf-panel, .finance-main) {
+  border-radius: 6px;
+  background-image:
+    linear-gradient(#57d5f499, #57d5f499),
+    linear-gradient(#57d5f499, #57d5f499),
+    linear-gradient(#57d5f466, #57d5f466), linear-gradient(#57d5f466, #57d5f466);
+  background-position:
+    left top,
+    left top,
+    right bottom,
+    right bottom;
+  background-size:
+    18px 1px,
+    1px 18px,
+    18px 1px,
+    1px 18px;
+  background-repeat: no-repeat;
+}
+html[data-ui-theme='tech'] body .ws-brand-mark {
+  box-shadow: 0 0 0 1px #57d5f433;
+}
+html[data-ui-theme='tech'] body .ws-topbar {
+  border-bottom-color: #3b6a84;
+}
+html[data-ui-theme='tech']
+  body
+  :is(
+    .ws-workspace,
+    .ws-popover,
+    .ws-command-dialog,
+    .ws-skin-dialog,
+    [data-mobile='true'][data-slot='sidebar'],
+    input,
+    textarea,
+    select
+  ) {
+  color-scheme: dark;
+}
+body .ws-workspace,
+[data-mobile='true'][data-slot='sidebar'] {
+  --sidebar: var(--ui-surface);
+  --sidebar-foreground: var(--ui-muted);
+  --sidebar-accent: var(--ui-primary-soft);
+  --sidebar-accent-foreground: var(--ui-primary);
+  --sidebar-border: var(--ui-border);
+}
+body .ws-popover,
+body .ws-command-dialog {
+  --background: var(--ui-surface);
+  --foreground: var(--ui-text);
+  --popover: var(--ui-surface);
+  --popover-foreground: var(--ui-text);
+  --accent: var(--ui-primary-soft);
+  --accent-foreground: var(--ui-primary);
+  --muted-foreground: var(--ui-subtle);
+  --border: var(--ui-border);
+  --ring: var(--ui-primary);
+}
+body .ws-account-trigger {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 0;
+  background: transparent;
+  color: var(--ui-text);
+  cursor: pointer;
+  padding: 3px;
+  font-size: 14px;
+}
+body .ws-account-trigger > svg {
+  color: var(--ui-subtle);
+}
+body .ws-account-name strong {
+  font-weight: 500;
+}
+body .ws-account-popover {
+  width: 290px;
+  min-width: 270px;
+}
+body .ws-account-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px;
+  color: var(--ui-primary);
+}
+body .ws-account-summary > div {
+  min-width: 0;
+}
+body .ws-account-summary strong {
+  display: block;
+  color: var(--ui-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+body .ws-account-summary span {
+  display: block;
+  color: var(--ui-muted);
+  font-size: 12px;
+  margin-top: 5px;
+  line-height: 1.6;
+}
+body .ws-account-popover [role='menuitem'] {
+  min-height: 41px;
+}
+body .ws-account-popover [role='menuitem'][data-variant='destructive'] {
+  color: var(--ui-danger);
+}
+body .ws-account-hint {
+  margin-left: auto;
+  color: var(--ui-subtle);
+  font-size: 12px;
+}
+body .ws-skin-dialog {
+  width: min(680px, calc(100vw - 32px));
+  max-width: 680px;
+  padding: 25px;
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  border: 1px solid var(--ui-border);
+}
+body .ws-skin-dialog [data-slot='dialog-title'] {
+  font-size: 22px;
+  color: var(--ui-text);
+}
+body .ws-skin-dialog [data-slot='dialog-description'] {
+  color: var(--ui-muted);
+  font-size: 14px;
+  line-height: 1.75;
+  margin-top: 8px;
+}
+body .ws-skin-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 17px;
+  margin: 9px 0;
+}
+body .ws-skin-option {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+  background: var(--ui-surface);
+  text-align: left;
+  cursor: pointer;
+}
+body .ws-skin-option.selected {
+  border-color: var(--ui-primary);
+  box-shadow: 0 0 0 1px var(--ui-primary);
+  background: var(--ui-primary-soft);
+}
+body .ws-skin-option:focus-visible {
+  outline: 2px solid var(--ui-primary);
+  outline-offset: 4px;
+}
+body .ws-skin-preview {
+  height: 135px;
+  display: grid;
+  grid-template-columns: 24% 1fr;
+  border: 1px solid #dce3ed;
+  border-radius: 7px;
+  overflow: hidden;
+}
+body .ws-skin-preview.preview-light {
+  background: #f5f7fb;
+}
+body .ws-preview-sidebar {
+  background: #fff;
+  border-right: 1px solid #e0e6ef;
+  padding: 15px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+body .ws-preview-sidebar i {
+  height: 5px;
+  border-radius: 3px;
+  background: #dde5f0;
+}
+body .ws-preview-sidebar i:first-child {
+  background: #7e9fdf;
+  width: 70%;
+  margin-bottom: 8px;
+}
+body .ws-preview-content {
+  padding: 17px 12px;
+}
+body .ws-preview-line {
+  width: 45%;
+  height: 6px;
+  background: #a8b7cb;
+  border-radius: 3px;
+  margin-bottom: 14px;
+}
+body .ws-preview-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+body .ws-preview-metrics i {
+  display: block;
+  height: 23px;
+  background: #fff;
+  border: 1px solid #e1e7f0;
+  border-radius: 3px;
+}
+body .ws-preview-panel {
+  height: 39px;
+  margin-top: 9px;
+  background: #fff;
+  border: 1px solid #e1e7f0;
+  border-radius: 3px;
+}
+body .preview-tech {
+  background: #07111f;
+  border-color: #29455f;
+}
+body .preview-tech .ws-preview-sidebar {
+  background: #0d1c2d;
+  border-color: #29455f;
+}
+body .preview-tech .ws-preview-sidebar i {
+  background: #29455f;
+}
+body .preview-tech .ws-preview-sidebar i:first-child {
+  background: #57d5f4;
+}
+body .preview-tech .ws-preview-line {
+  background: #a8d7ed;
+}
+body .preview-tech .ws-preview-metrics i,
+body .preview-tech .ws-preview-panel {
+  background: #11243a;
+  border-color: #386a86;
+  border-radius: 0;
+}
+body .ws-skin-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 15px 0 7px;
+  color: var(--ui-primary);
+}
+body .ws-skin-label strong {
+  color: var(--ui-text);
+  font-size: 16px;
+  font-weight: 600;
+}
+body .ws-skin-label > svg:last-child:not(:first-child) {
+  margin-left: auto;
+}
+body .ws-skin-option p {
+  font-size: 13px;
+  color: var(--ui-muted);
+  line-height: 1.7;
+}
+body .ws-skin-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 5px;
+}
+body .ws-skin-footer > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ui-subtle);
+  font-size: 12px;
+}
+body .ws-skin-footer > button {
+  background: var(--ui-primary);
+  color: var(--ui-primary-ink);
+  border: 1px solid var(--ui-primary);
+  padding: 8px 21px;
+  border-radius: 7px;
+  font-size: 14px;
+  cursor: pointer;
+}
+body .ws-account-error {
+  position: fixed;
+  right: 24px;
+  top: 90px;
+  z-index: 70;
+  padding: 13px 18px;
+  background: var(--ui-danger-soft);
+  color: var(--ui-danger);
+  border: 1px solid var(--ui-danger);
+  border-radius: 7px;
+  font-size: 14px;
+}
+body .ws-account-error > button {
+  margin-left: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+body .ws-workspace {
+  color: var(--ui-text);
+}
+body .ws-workspace .pp-app {
+  font-size: 15px;
+  line-height: 1.75;
+}
+body .ws-nav-button {
+  font-size: 15px;
+  min-height: 45px;
+  color: var(--ui-muted);
+}
+body .ws-sub-link {
+  font-size: 14px;
+  min-height: 38px;
+  color: var(--ui-muted);
+}
+body .ws-section-label {
+  font-size: 12px;
+  color: var(--ui-subtle);
+}
+body .ws-company select,
+body .ws-breadcrumb,
+body .ws-search-trigger {
+  font-size: 14px;
+}
+body .ws-company small,
+body .ws-user-copy small,
+body .ws-connection {
+  font-size: 12px;
+  color: var(--ui-subtle);
+}
+body .ws-user-copy strong {
+  font-size: 14px;
+}
+body .ws-brand-copy small {
+  font-size: 11px;
+  color: var(--ui-subtle);
+}
+body .ws-workspace .pp-heading h1,
+body .ws-workspace .po-heading h1 {
+  font-size: 29px;
+}
+body .ws-workspace .pp-heading p,
+body .ws-workspace .po-heading p {
+  font-size: 14px;
+  color: var(--ui-muted);
+}
+body .ws-workspace .pp-panel-title h3 {
+  font-size: 17px;
+}
+body .ws-workspace .pp-panel-title h3::before {
+  box-shadow: none;
+}
+body .ws-workspace .pp-table {
+  font-size: 14px;
+}
+body .ws-workspace .pp-table th,
+body .ws-workspace .pp-table td {
+  padding: 11px 12px;
+}
+body .ws-workspace .pp-table td b {
+  font-size: 14px;
+}
+body .ws-workspace .pp-btn {
+  font-size: 14px !important;
+  min-height: 35px;
+}
+body .ws-workspace .pp-table .pp-btn,
+body .ws-workspace .pp-mini .pp-btn {
+  font-size: 13px !important;
+  min-height: 30px;
+}
+body .ws-workspace .pp-tabs button {
+  font-size: 14px;
+}
+body .ws-workspace .pp-tag {
+  font-size: 12px;
+}
+body .ws-workspace .pp-mini b {
+  font-size: 15px;
+}
+body .ws-workspace .pp-mini p {
+  font-size: 14px;
+}
+body .ws-workspace .pp-mode-line {
+  font-size: 12px;
+  color: var(--ui-subtle);
+}
+body .ws-workspace input::placeholder,
+body .ws-workspace textarea::placeholder {
+  color: var(--ui-subtle);
+  opacity: 1;
+}
+body
+  .pp-app
+  input:not([type='checkbox']):not([type='range']):not([type='color']),
+body .pp-app textarea,
+body .pp-app select {
+  font-size: 14px;
+  color-scheme: light;
+}
+body .pp-app .pp-btn.primary,
+body .primary-button,
+body .pf-primary,
+body .ag-center.ag-center .ag-primary,
+body .po-dashboard .po-button {
+  background: var(--ui-primary) !important;
+  border-color: var(--ui-primary) !important;
+  color: var(--ui-primary-ink) !important;
+  box-shadow: none;
+}
+body .po-app {
+  font-size: 15px;
+}
+body .po-dashboard .po-metric-top,
+body .po-dashboard .po-room > p,
+body .po-dashboard .po-room footer,
+body .po-dashboard .po-space-link,
+body .po-dashboard .po-attention b,
+body .po-dashboard .po-company-list b {
+  font-size: 14px;
+  color: var(--ui-text);
+}
+body .po-dashboard .po-metric-note,
+body .po-dashboard .po-room-spec,
+body .po-dashboard .po-section-sub,
+body .po-dashboard .po-attention p,
+body .po-dashboard .po-company-list p,
+body .po-dashboard .po-relation-node p,
+body .po-dashboard .po-service-table td,
+body .po-dashboard .po-service-table th {
+  font-size: 13px;
+  color: var(--ui-muted);
+}
+body .po-dashboard .po-relation-node b,
+body .po-dashboard .po-service-table td:first-child button {
+  font-size: 14px;
+  color: var(--ui-text);
+}
+body .po-dashboard .po-status,
+body .po-dashboard .po-service-status,
+body .po-dashboard .po-section-kicker,
+body .po-dashboard .po-space-legend,
+body .po-dashboard .po-canvas-label,
+body .po-dashboard .po-relation-node small,
+body .po-dashboard .po-energy p,
+body .po-dashboard .po-page-footer {
+  font-size: 12px;
+}
+body .po-dashboard .po-filters button {
+  font-size: 13px;
+}
+body .po-dashboard .po-text-button {
+  font-size: 13px;
+}
+body .po-dashboard .po-room {
+  padding-top: 16px;
+}
+body .po-dashboard .po-room-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+body .po-dashboard .po-room-spec {
+  flex-wrap: wrap;
+  gap: 5px;
+}
+body .ws-popover [role='menuitem'],
+body .ws-command-dialog [cmdk-item] {
+  font-size: 14px;
+}
+body .ws-command-dialog [cmdk-group-heading],
+body .ws-command-footer {
+  font-size: 12px;
+}
+body .ws-workspace .recharts-cartesian-axis-tick text {
+  fill: var(--ui-muted);
+  font-size: 12px;
+  stroke: none;
+}
+body .ws-workspace .recharts-cartesian-grid line {
+  stroke: var(--ui-chart-grid);
+}
+body .ws-workspace .recharts-default-tooltip {
+  background: var(--ui-surface) !important;
+  border: 1px solid var(--ui-border) !important;
+  color: var(--ui-text) !important;
+  border-radius: 8px;
+  box-shadow: var(--ui-shadow);
+  font-size: 13px;
+}
+body .ws-workspace .recharts-tooltip-label {
+  color: var(--ui-text) !important;
+}
+@media (max-width: 1350px) {
+  body .po-dashboard .po-room-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  body .ws-account-name {
+    display: none;
+  }
+  body .ws-account-trigger {
+    gap: 4px;
+  }
+  body .ws-skin-dialog {
+    padding: 20px;
+    max-height: 90svh;
+    overflow-y: auto;
+  }
+  body .ws-skin-options {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+  body .ws-skin-preview {
+    height: 110px;
+  }
+  body .ws-skin-footer {
+    align-items: flex-start;
+  }
+  body .ws-workspace .po-heading h1,
+  body .ws-workspace .pp-heading h1 {
+    font-size: 25px;
+  }
+  body .po-dashboard .po-space-toolbar {
+    gap: 12px;
+  }
+  body .po-dashboard .po-filters {
+    flex-wrap: wrap;
+  }
+  body .po-dashboard .po-metric-value {
+    font-size: 29px;
+  }
+  body .po-dashboard .po-metric-note {
+    font-size: 12px;
+  }
+  body .po-dashboard .po-room-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body .po-dashboard .po-space-legend {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

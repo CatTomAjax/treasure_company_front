@@ -1,0 +1,84 @@
+/* Keep the complete model and both data columns visible at every desktop width. */
+.page-overview .pp-overview-layout {
+  grid-template-columns: minmax(0, 1fr) clamp(250px, 16vw, 420px);
+}
+
+.page-overview .pp-park-visual {
+  display: grid;
+  grid-template-columns: clamp(150px, 10vw, 210px) minmax(0, 1fr) clamp(
+      135px,
+      9vw,
+      190px
+    );
+  gap: clamp(12px, 1.2vw, 24px);
+  min-height: 360px;
+  padding: 12px 0 18px;
+  align-items: center;
+}
+
+.page-overview .pp-park-left {
+  width: auto;
+  min-width: 0;
+}
+
+.page-overview .pp-park-model {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border-radius: 8px;
+  background: radial-gradient(ellipse at center, #143b4c66, transparent 72%);
+}
+
+.page-overview .pp-park-model > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: clamp(380px, 36vw, 900px);
+  object-fit: contain;
+  mix-blend-mode: screen;
+}
+
+.page-overview .pp-energy-floats {
+  position: static;
+  width: auto;
+  min-width: 0;
+  top: auto;
+  right: auto;
+}
+
+.page-overview .pp-energy-floats > div {
+  padding: clamp(10px, 1vw, 18px);
+}
+
+.page-overview .pp-park-model-modal {
+  display: flex;
+  flex-direction: column;
+  width: min(1400px, 94vw);
+  max-height: 94vh;
+}
+
+.page-overview .pp-park-model-modal > header {
+  flex: none;
+}
+
+.page-overview .pp-park-model-modal > img {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  max-height: calc(90vh - 80px);
+  object-fit: contain;
+}
+
+@media (min-width: 1800px) {
+  .page-overview .pp-park-left .pp-donut {
+    height: clamp(170px, 12vw, 240px);
+  }
+  .page-overview .pp-park-mini strong {
+    font-size: clamp(24px, 1.3vw, 38px);
+  }
+  .page-overview .pp-energy-floats b {
+    font-size: clamp(22px, 1.1vw, 32px);
+  }
+}
