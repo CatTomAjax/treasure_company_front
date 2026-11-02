@@ -14,7 +14,9 @@ npm run build
 npm start
 ```
 
-访问 http://localhost:3002/#ppt/portrait。后端先启动在 3003，前端通过同源 /api 代理访问业务接口；登录 Cookie、文件和 AI 事件流保持兼容。前端不需要 MySQL 密码或模型密钥。
+访问 http://localhost:3002/#ppt/portrait。后端默认端口为 3003，前端通过同源 /api 代理访问业务接口；登录 Cookie、文件和 AI 事件流保持兼容。前端不需要 MySQL 密码或模型密钥。
+
+双击 `start.cmd` 或执行 `npm run start:workspace` 可启动相邻的两个仓库。前端 `.env` 使用 `FRONTEND_PORT`、`BACKEND_PORT` 配置配套端口，后端 `.env` 的 `PORT` 与之保持一致；`API_BASE_URL` 用于前端单独启动。本机后端使用 3013，前端使用 3002，避免与已有 3003 服务冲突。
 
 ## 验证
 

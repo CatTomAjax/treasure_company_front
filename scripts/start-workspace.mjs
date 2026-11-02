@@ -34,8 +34,19 @@ for (const [folder, name] of [
   )
     throw Error('源码目录未就绪：' + folder);
 }
-const frontPort = Number(process.env.FRONTEND_PORT || 3002),
+const envFile = resolve(frontend, '.env');
+if (existsSync(envFile)) {
+  const explicit = { ...process.env };
+  process.loadEnvFile(envFile);
+  Object.assign(process.env, explicit);
+}
+const frontPort = Number(process.env.FRONTEND_PORT || process.env.PORT || 3002),
   backPort = Number(process.env.BACKEND_PORT || 3003);
+for (const port of [frontPort, backPort]) {
+  if (!Number.isInteger(port) || port < 1 || port > 65535)
+    throw Error('服务端口必须是 1 到 65535 的整数');
+}
+if (frontPort === backPort) throw Error('前后端必须使用不同端口');
 const logs = resolve(frontend, 'runtime');
 mkdirSync(logs, { recursive: true });
 async function healthy(port) {
@@ -44,7 +55,12 @@ async function healthy(port) {
       `http://127.0.0.1:${port}/api/platform/version`,
       { signal: AbortSignal.timeout(1200) },
     );
-    return response.ok ? await response.json() : null;
+    if (!response.ok) return { interface: 'unrecognized' };
+    try {
+      return (await response.json()) || { interface: 'unrecognized' };
+    } catch {
+      return { interface: 'unrecognized' };
+    }
   } catch {
     return null;
   }

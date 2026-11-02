@@ -4,4 +4,4 @@
 
 统一控件：components/ui/app-controls.tsx 和 components/app-controls.css。保留原生表单提交、必填、禁用、受控值与重置语义。验证 npm run typecheck、npm run test:controls、npm run test:portrait、npm run test:proxy、npm run build。
 
-双击 start.cmd 启动配套前后端：前端 3002，后端 3003。
+双击 start.cmd 启动配套前后端。默认前端 3002、后端 3003；本机 .env 指定前端 3002、后端 3013，保留已有 3003 服务。同步维护前端 BACKEND_PORT / API_BASE_URL 与后端 PORT；不要提交 .env。
